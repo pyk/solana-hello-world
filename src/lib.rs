@@ -19,6 +19,8 @@ pub fn process_instruction(
     accounts: &[AccountInfo],
     _instruction_data: &[u8],
 ) -> ProgramResult {
+    msg!("Executing Program ID {}", program_id);
+    msg!("Accounts {:?}", accounts);
     msg!("Hello World");
 
     // Iterating account is better than indexing
@@ -96,5 +98,20 @@ mod test {
                 .counter,
             2
         );
+
+        let account2_key = Pubkey::default();
+        let account2 = AccountInfo::new(
+            &account2_key,
+            false,
+            true,
+            &mut lamports,
+            &mut data,
+            &owner,
+            false,
+            Epoch::default(),
+        );
+        let accounts2 = vec![account2];
+
+        process_instruction(&program_id, &accounts2, &instruction_data).unwrap();
     }
 }
