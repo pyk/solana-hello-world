@@ -21,4 +21,4 @@ There are two kinds of unit tests: [Exercising program function directly](./src/
 
 ## Deploy
 
-    solana program deploy /home/pyk/solana_hello_world/program/solana_hello_world.so
+    solana program deploy program/solana_hello_world.so
